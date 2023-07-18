@@ -1,7 +1,9 @@
 <template>
   <div>
-    <VitePwaManifest />
-    <NuxtWelcome />
+      <VitePwaManifest />    
+      <NuxtLayout>
+        <NuxtPage />        
+      </NuxtLayout>
   </div>
 </template>
 <script setup>

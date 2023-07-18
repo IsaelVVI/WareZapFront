@@ -1,7 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ['@vite-pwa/nuxt'],
+  modules: ['@vite-pwa/nuxt', '@nuxtjs/tailwindcss'],
+  css: [
+    '@/assets/css/main.css',
+  ],
   pwa: {
     manifest: {
       name: "WareZap",
@@ -37,5 +40,6 @@ export default defineNuxtConfig({
       enabled: true,
       type: 'module'
     }
-  }
+  },
+  ssr: false
 })
