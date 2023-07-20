@@ -41,9 +41,9 @@
                         <span class="h-8 w-32 bg-yellow-500/90 backdrop-blur-lg shadow-md shadow-yellow-500/30 rounded-md text-sm font-extrabold flex justify-center items-center select-none text-white">Premium</span>
                     </div>
                 </div>
+                <NuxtPage />
             </div>
         </div>
-        <!-- <NuxtPage /> -->
     </div>
 </template>
 <script setup>
