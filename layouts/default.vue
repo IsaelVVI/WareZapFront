@@ -29,7 +29,7 @@
                     </div>                    
                 </div>
             </div>
-            <div class="flex-1 flex flex-col h-full">
+            <div class="flex-1 flex flex-col h-full overflow-x-hidden">
                 <div class="h-24 md:h-40 flex justify-center items-center gap-2 md:block w-full bg-[#440084] relative">
                     <div class="md:absolute overflow-hidden border md:border-4 border-white h-14 w-14 md:h-40 md:w-40 rounded-full bg-white -bottom-16 left-20 flex justify-center items-center">
                         <div>

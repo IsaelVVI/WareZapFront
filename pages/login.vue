@@ -27,7 +27,6 @@
     </div>
 </template>
 <script setup>
-
 const login_form = ref({
     email: '',
     password: ''
@@ -48,6 +47,7 @@ const newLogin = async () => {
     
     if (data.value) {
         useToken().value = data.value.access_token
+        localStorage.setItem('token', data.value.access_token)
         console.log(data.value);
     }
 }
