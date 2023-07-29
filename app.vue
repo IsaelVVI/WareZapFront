@@ -16,6 +16,7 @@ useHead({
   ]
 })
 
+await auth()
 
 onMounted(() => {
   window.OneSignal = window.OneSignal || [];

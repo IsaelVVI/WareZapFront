@@ -42,7 +42,7 @@
                     <td>
                         <!-- Trocar a Tela que trincou -->
                         <!-- <br /> -->
-                        <span class="select-none dsbadge dsbadge-ghost dsbadge-sm w-full rounded-md bg-slate-700 text-white">(85) 9 968*-****</span>
+                        <span class="select-none dsbadge dsbadge-ghost dsbadge-sm w-full rounded-md bg-slate-700 text-white truncate">(85) 9 968*-****</span>
                     </td>
                     <td>Samsung S10e</td>
                     <th>

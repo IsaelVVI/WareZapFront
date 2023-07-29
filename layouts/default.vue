@@ -1,4 +1,8 @@
 <template>
+    <!-- modais -->
+    <ModalNewClientComponent v-if="modalclient" />
+    <ModalSelectClientComponent v-if="modalselectclient" />
+    <ModalSelectDeviceComponent v-if="modalselectdevice" />
     <div class="h-screen w-screen bg-white">
         <div class="h-full w-full flex items-center">
             <div class="hidden md:flex h-full w-14 md:w-32 bg-[#f8f5f1] flex-col items-center relative space-y-4">
@@ -30,7 +34,7 @@
                 </div>
             </div>
             <div class="flex-1 flex flex-col h-full overflow-x-hidden">
-                <div class="h-24 md:h-40 flex justify-center items-center gap-2 md:block w-full bg-[#440084] relative">
+                <!-- <div class="h-24 md:h-40 flex justify-center items-center gap-2 md:block w-full bg-[#440084] relative">
                     <div class="md:absolute overflow-hidden border md:border-4 border-white h-14 w-14 md:h-40 md:w-40 rounded-full bg-white -bottom-16 left-20 flex justify-center items-center">
                         <div>
                             <img src="https://cdn.pixabay.com/photo/2023/01/22/11/49/girl-7736189_1280.jpg" alt="">
@@ -40,15 +44,26 @@
                         <span class="text-white text-3xl font-extrabold w-max select-none">Fulano de Tal</span>
                         <span class="h-8 w-32 bg-yellow-500/90 backdrop-blur-lg shadow-md shadow-yellow-500/30 rounded-md text-sm font-extrabold flex justify-center items-center select-none text-white">Premium</span>
                     </div>
-                </div>
+                </div> -->
                 <NuxtPage />
             </div>
         </div>
     </div>
 </template>
+
 <script setup>
+const modalclient = useNewClient()
+const modalselectclient = useSelectClient()
+const modalselectdevice = useSelectDevice()
+
+
+onMounted(() => {
+    document.onkeydown = function(e) {
+      if(e.key === 'Escape') {
+        useNewClient().value = false
+        useSelectClient().value = false
+        useSelectDevice().value = false
+      }
+    }    
+})
 </script>
-
-<style scoped>
-
-</style>

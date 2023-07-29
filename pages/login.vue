@@ -27,6 +27,13 @@
     </div>
 </template>
 <script setup>
+import localforage from 'localforage';
+
+
+definePageMeta({
+    name: 'login'
+})
+
 const login_form = ref({
     email: '',
     password: ''
@@ -47,8 +54,9 @@ const newLogin = async () => {
     
     if (data.value) {
         useToken().value = data.value.access_token
-        localStorage.setItem('token', data.value.access_token)
+        localforage.setItem('token', data.value.access_token)
         console.log(data.value);
+        await navigateTo('/')
     }
 }
 

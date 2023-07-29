@@ -9,7 +9,7 @@
                     <span class="group-hover:text-white transition-all duration-300 font-black text-lg">NOVO SERVIÇO</span>
                     <span class="group-hover:text-white transition-all duration-300 text-xs font-semibold">Adicione um novo serviço</span>                    
                 </div>
-                <div class="select-none cursor-pointer group-hover:bg-white transition-all duration-300 h-10 w-full rounded-lg bg-black/40 flex justify-center items-center">
+                <div @click="navigateTo({name: 'new-service'})" class="select-none cursor-pointer group-hover:bg-white transition-all duration-300 h-10 w-full rounded-lg bg-black/40 flex justify-center items-center">
                     <span class="font-extrabold text-white group-hover:text-[#440084]">ADICIONAR</span>
                 </div>
             </div>
@@ -24,7 +24,7 @@
                     <span class="group-hover:text-white transition-all duration-300 font-black text-lg">NOVO CLIENTE</span>
                     <span class="group-hover:text-white transition-all duration-300 text-xs font-semibold">Adicione um novo cliente</span>                    
                 </div>
-                <div class="select-none cursor-pointer group-hover:bg-white transition-all duration-300 h-10 w-full rounded-lg bg-black/40 flex justify-center items-center">
+                <div @click="newClient" class="select-none cursor-pointer group-hover:bg-white transition-all duration-300 h-10 w-full rounded-lg bg-black/40 flex justify-center items-center">
                     <span class="font-extrabold text-white group-hover:text-[#440084]">ADICIONAR</span>
                 </div>
             </div>
@@ -53,4 +53,9 @@
 </template>
 
 <script setup>
+
+const newClient = () => {
+    useNewClient().value = true
+}
+
 </script>
