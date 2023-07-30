@@ -4,10 +4,10 @@
             <div class="w-full text-center">
                 <span class="font-Anton font-bold text-3xl">NOVO SERVIÇO</span>
             </div>
-            <form action="" @submit.prevent="() => {}">
+            <form action="" @submit.prevent="registerService()">
                 <div class="dsform-control w-full">
                     <label class="dslabel">Titulo</label>
-                    <input type="text" placeholder="Digite o titulo do serviço" class="dsinput dsinput-bordered w-full" />
+                    <input v-model="new_service.title" type="text" placeholder="Digite o titulo do serviço" class="dsinput dsinput-bordered w-full" />
                     <label class="dslabel">
                         <!-- <span class="dslabel-text-alt">Bottom Left label</span>                         -->
                     </label>
@@ -45,35 +45,35 @@
                     <label class="dslabel">
                         <span class="dslabel-text">Descrição</span>
                     </label>
-                    <textarea class="dstextarea dstextarea-bordered h-10 w-full bg-zinc-100 border-black/10 rounded" placeholder="Descrição do serviço"></textarea>
+                    <textarea v-model="new_service.description" class="dstextarea dstextarea-bordered h-10 w-full bg-zinc-100 border-black/10 rounded" placeholder="Descrição do serviço"></textarea>
                 </div>
                 <div class="w-full grid grid-cols-2 gap-2">
                     <div class="w-full">
                         <label for="" class="text-xs pl-1">Data de inicio</label>
-                        <input type="date" class="h-10 w-full p-2 rounded bg-zinc-100 outline-black/20">
+                        <input v-model="initial_date" type="date" class="h-10 w-full p-2 rounded bg-zinc-100 outline-black/20">
                     </div>
                     <div class="w-full">
                         <label for="" class="text-xs pl-1">Valor:</label>
-                        <input type="tel" class="h-10 w-full p-2 rounded bg-zinc-100 outline-black/20" placeholder="R$ 0,00">
+                        <input v-model="new_service.value" type="text" v-maska data-maska="#.###.###,##" data-maska-reversed="true" class="h-10 w-full p-2 rounded bg-zinc-100 outline-black/20" placeholder="R$ 0,00">
                     </div>
                 </div>
                 <div class="w-full">
                     <label for="" class="text-xs pl-1 flex items-center py-2 gap-2">
                         <span>Entrada:</span>  <input @change="changeEntry" type="checkbox" class="dstoggle dstoggle-primary h-6 checked:border-[#440084] checked:bg-[#440084]" />
                     </label>
-                    <input :disabled="!has_entry" type="tel" :class="!has_entry && 'cursor-not-allowed'" class="h-10 w-full p-2 rounded bg-zinc-100 outline-black/20" placeholder="R$ 0,00">
+                    <input v-model="new_service.entry" :disabled="!has_entry" v-maska data-maska="#.###.###,##" data-maska-reversed="true" type="tel" :class="!has_entry && 'cursor-not-allowed'" class="h-10 w-full p-2 rounded bg-zinc-100 outline-black/20" placeholder="R$ 0,00">
                     <label for="" class="text-xs pl-1 text-red-500 font-sans">OBS: Caso o serviço não tenha entrada deixar em branco</label>
                 </div>
                 <div class="w-full">
                     <label for="" class="text-sm pl-1">WhatsApp a ser notificado</label>
-                    <input type="tel" class="h-10 w-full p-2 bg-zinc-100 rounded" value="(85) 9 99689-1288" placeholder="(85) 9 99689-1288">
+                    <input v-model="new_service.whatsapp_notify" v-maska data-maska="(##) 9 ####-####" type="tel" class="h-10 w-full p-2 bg-zinc-100 rounded" placeholder="(85) 9 99689-1288">
                     <label for="" class="text-xs text-red-500 font-sans">OBS: WhatsApp que será notificado sobre as atualizações</label>
                 </div>
                 <div class="w-full grid grid-cols-2 gap-2 mt-2">
                     <button class="dsbtn dsbtn-error text-white block">
                         Cancelar
                     </button>
-                    <button class="dsbtn bg-[#440084] hover:bg-[white] text-white hover:text-[#440084]">
+                    <button type="submit" class="dsbtn bg-[#440084] hover:bg-[white] text-white hover:text-[#440084]">
                         Criar
                     </button>
                 </div>
@@ -83,13 +83,29 @@
 </template>
 
 <script setup>
-
+import { format } from 'date-fns';
 definePageMeta({
     name: 'new-service'
 })
 
 const client_selected = useClientSelected()
 const device_selected = useDeviceSelected()
+
+
+const new_service = ref({
+    title: '',
+    description: '',
+    complete: false,
+    value: '',
+    entry: null,
+    whatsapp_notify: ''
+})
+
+const initial_date = ref(format(new Date(), 'yyyy-MM-dd'))
+
+watch(initial_date, () => {
+    console.log(initial_date);
+})
 
 const has_entry = ref(false)
 
@@ -150,6 +166,67 @@ const searchDevices = async () => {
     }
 }
 
+const registerService = async () => {
+    if(has_entry){
+        new_service.value.entry = brlToFloat(new_service.value.entry)
+    }else{
+        new_service.value.entry = null
+    }
+    
+    new_service.value.value = brlToFloat(new_service.value.value)
+    new_service.value.whatsapp_notify = formatarNumeroTelefone(new_service.value.whatsapp_notify)
+    
+    const {data, error} = await useFetch('service', {
+        method: 'post',
+        baseURL: 'http://localhost:3000',
+        headers: {
+            Authorization: `Bearer ${useToken().value}`
+        },
+        body: {
+            ...new_service.value,
+            client_id: client_selected.value.id,
+            device_id: device_selected.value.id,
+            initial_date: initial_date.value
+        }
+    })
+    
+    if (error.value) {
+        console.log(error.value);
+    }
+    
+    if (data.value) {
+        console.log(data.value);
+        new_service.value = {
+            complete: false,
+            description: '',
+            entry: null,
+            title: '',
+            value: '',
+            whatsapp_notify: ''
+        }
+    }
+    
+}
+
+const brlToFloat = (valorBRL) => {
+  // Remover todos os caracteres não numéricos, exceto a vírgula decimal
+  const regexNumeros = /[^\d,]/g;
+  const valorNumerico = valorBRL.replace(regexNumeros, '');
+
+  // Substituir a vírgula decimal por ponto
+  const valorComPonto = valorNumerico.replace(',', '.');
+
+  // Converter o valor em float
+  const valorFloat = parseFloat(valorComPonto);
+
+  return valorFloat;
+}
+
+const formatarNumeroTelefone = (telefone) => {
+  const regexNumeros = /\d/g;
+  const numeros = telefone.match(regexNumeros).join('');
+  return numeros;
+}
 
 onMounted(async () => {
     await searchCLients()
