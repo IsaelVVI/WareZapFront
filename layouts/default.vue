@@ -3,9 +3,9 @@
     <ModalNewClientComponent v-if="modalclient" />
     <ModalSelectClientComponent v-if="modalselectclient" />
     <ModalSelectDeviceComponent v-if="modalselectdevice" />
-    <div class="h-screen w-screen bg-white">
+    <div class="h-screen w-screen">
         <div class="h-full w-full flex items-center">
-            <div class="hidden md:flex h-full w-14 md:w-32 bg-[#f8f5f1] flex-col items-center relative space-y-4">
+            <div class="hidden md:flex h-full w-14 md:w-32 flex-col items-center relative space-y-4">
                 <div class="h-40 w-full">     
                     <!-- Adicionar Logo depois -->
                 </div>
