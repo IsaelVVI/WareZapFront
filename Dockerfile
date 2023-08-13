@@ -14,7 +14,7 @@ WORKDIR /src
 FROM base as build
 
 COPY --link package.json package-lock.json .
-RUN pnpm install --force --production=false
+RUN pnpm install
 
 COPY --link . .
 
