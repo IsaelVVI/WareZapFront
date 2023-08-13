@@ -14,11 +14,11 @@ WORKDIR /src
 FROM base as build
 
 COPY --link package.json package-lock.json .
-RUN npm install --force --production=false
+RUN pnpm install --force --production=false
 
 COPY --link . .
 
-RUN npm run build
+RUN pnpm run build
 RUN npm prune
 
 # Run
