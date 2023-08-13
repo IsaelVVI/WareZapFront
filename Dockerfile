@@ -13,12 +13,13 @@ WORKDIR /src
 # Build
 FROM base as build
 
-COPY --link package.json yarn.lock .
-RUN yarn install --production=false
+COPY --link package.json package-lock.json .
+RUN npm install --force --production=false
 
 COPY --link . .
 
-RUN yarn build
+RUN npm run build
+RUN npm prune
 
 # Run
 FROM base
