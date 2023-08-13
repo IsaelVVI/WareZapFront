@@ -41,8 +41,5 @@ export default defineNuxtConfig({
       type: 'module'
     }
   },
-  nitro: {
-    preset: 'heroku'
-  },
   ssr: false
 })
