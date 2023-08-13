@@ -1,6 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-export default defineNuxtConfig({
-  devtools: { enabled: false },
+export default defineNuxtConfig({  
   modules: ['@vite-pwa/nuxt', '@nuxtjs/tailwindcss'],
   css: [
     '@/assets/css/main.css',
