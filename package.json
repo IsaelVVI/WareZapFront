@@ -24,6 +24,6 @@
     "localforage": "^1.10.0",
     "maska": "^2.1.9",
     "qrcode": "^1.5.3",
-    "whatsapp-web.js": "^1.21.0"
+    "socket.io-client": "^4.7.2"
   }
 }
