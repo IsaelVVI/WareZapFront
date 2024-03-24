@@ -2,6 +2,14 @@ const animate = require("tailwindcss-animate")
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  content: [
+    "./components/**/*.{js,vue,ts}",
+    "./layouts/**/*.vue",
+    "./pages/**/*.vue",
+    "./plugins/**/*.{js,ts}",
+    "./app.vue",
+    "./error.vue",
+  ],
   darkMode: ["class"],
   safelist: ["dark"],
   prefix: "",
@@ -14,7 +22,14 @@ module.exports = {
         "2xl": "1400px",
       },
     },
+    fontFamily: {
+      anton: ['Anton', 'serif']
+    },
     extend: {
+      screens: {
+        '3xl': '1600px',
+        '4xl': '1921px'
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

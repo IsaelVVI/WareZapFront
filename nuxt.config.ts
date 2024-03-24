@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ['@pinia/nuxt','@vueuse/nuxt', '@nuxtjs/device', 'shadcn-nuxt'],
+  modules: ['@pinia/nuxt','@vueuse/nuxt', '@nuxtjs/device', 'shadcn-nuxt', 'nuxt-swiper'],
   css: ['~/assets/css/main.css'],
   postcss: {
     plugins: {
@@ -24,6 +24,14 @@ export default defineNuxtConfig({
      * @default "./components/ui"
      */
     componentDir: './components/ui'
+  },
+  swiper: {
+    // Swiper options
+    //----------------------
+    // prefix: 'Swiper',
+    // styleLang: 'css',
+    // modules: ['navigation', 'pagination'], // all modules are imported by default
+    prefix: ''
   },
   pinia: {
     storesDirs: ['./stores/**'],
