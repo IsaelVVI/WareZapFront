@@ -12,8 +12,8 @@
       </div>
       <div class="flex items-center max-xl:justify-end gap-2 xl:px-4 xl:gap-8">
         <div class="max-xl:hidden flex items-center gap-2">
-          <Button variant="link">Cadastre-se</Button>
-          <Button class="px-8">Entrar</Button>
+          <Button @click="openModalRegister()" variant="link">Cadastre-se</Button>
+          <Button @click="openModalLogin()" class="px-8">Entrar</Button>
         </div>
         <Search class="xl:hidden stroke-foreground/30" />
         <Cart class="cursor-pointer" />
@@ -23,15 +23,25 @@
 <script setup lang="ts">
 import {Menu, Search, ShoppingCart as Cart} from 'lucide-vue-next'
 
-const theme = useColorMode()
-theme.value = 'light'
 
 const common = useCommon()
+const modals = useModals()
 
+
+const theme = useColorMode()
+theme.value = 'light'
 
 
 const openSideBar = () => {
   common.sidebar = !common.sidebar
 }
 
+
+const openModalLogin = () => {
+  modals.login = true
+}
+
+const openModalRegister = () => {
+  modals.register = true
+}
 </script>

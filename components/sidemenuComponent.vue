@@ -12,7 +12,7 @@
           <b>
             Páginas
           </b>
-          <MenuOptionsComponent class="flex-col !items-start gap-0" />
+          <MenuOptionsComponent class="flex-col !items-start !gap-0 space-y-0" />
         </div>
 
         <div class="border-t p-4 space-y-2" >

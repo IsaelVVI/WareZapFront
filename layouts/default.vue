@@ -1,4 +1,7 @@
 <template>
+  <!-- Componentes -->
+  <LoginModalComponent />
+  <RegisterModalComponent />
   <div ref="el" class="h-screen w-full bg-foreground/5 overflow-y-auto scrollbar-none">
 <!-- Header   -->
     <header :class="scrolled_el ? 'shadow-lg': ''" class="sticky top-0 z-50">
