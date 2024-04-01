@@ -10,9 +10,10 @@
     <div class="w-full px-2">
       <sub class="font-semibold text-foreground/70">{{category}}</sub>
       <h4 class="truncate text-foreground text-lg">{{ title }}</h4>
-      <div class="px-1 max-xl:flex-col flex items-center justify-between">
+      <div class="h-20 px-1 max-xl:flex-col flex items-center justify-between">
         <div class="w-full flex flex-col items-start justify-start">
           <span v-if="old_price" class="text-xs line-through text-foreground/30">{{ old_price }}</span>
+          <!-- <span v-else class="text-xs line-through text-foreground/30">{{ price }}</span> -->
           <span class="text-sm font-bold whitespace-nowrap">{{ price }}</span>
         </div>
         <Button class="max-xl:w-full active:scale-95 transition-all">

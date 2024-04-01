@@ -2,9 +2,10 @@
   <!-- Componentes -->
   <LoginModalComponent />
   <RegisterModalComponent />
+  <ShopCartComponent/>
   <div ref="el" class="h-screen w-full bg-foreground/5 overflow-y-auto scrollbar-none">
 <!-- Header   -->
-    <header :class="scrolled_el ? 'shadow-lg': ''" class="sticky top-0 z-50">
+    <header :class="scrolled_el ? 'shadow-lg': ''" class="sticky top-0 z-40">
       <HeaderComponent />
       <MenuNavComponent class="max-xl:hidden" />
     </header>
@@ -21,12 +22,15 @@
     </div>
     <div class="h-44 w-full bg-foreground dark:bg-background/5 mt-14 p-4">
       <span class="text-background dark:text-foreground">
-        Footer Exemplo
+        <!-- Footer Exemplo -->
       </span>
     </div>
   </div>
 </template>
 <script setup lang="ts">
+
+const colormode = useColorMode()
+// colormode.value = 'light'
 
 const route = useRoute()
 

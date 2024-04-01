@@ -37,13 +37,13 @@
                     <hr class="w-full">
                     <div class="px-2 flex items-center gap-1">
                         <h4 class="text-sm">
-                            Novo Cliente?
+                            Já tem uma conta?
                         </h4>
-                        <Button variant="link" class="px-0 font-semibold">Cadastre-se</Button>
+                        <Button @click="openLogin()" variant="link" class="px-0 font-semibold">Fazer Login</Button>
                     </div>
                 </div>
                 <DialogFooter>
-                    <Button>Acessar Conta</Button>
+                    <Button>Criar Conta</Button>
                 </DialogFooter>
             </form>
         </DialogContent>
@@ -55,6 +55,10 @@ import {X} from 'lucide-vue-next'
 
 const modals = useModals()
 
+const openLogin = () => {
+    modals.login = true
+    closeModal()
+}
 
 const closeModal = () => {
     modals.register = false

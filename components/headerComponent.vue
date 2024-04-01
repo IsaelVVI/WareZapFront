@@ -16,7 +16,10 @@
           <Button @click="openModalLogin()" class="px-8">Entrar</Button>
         </div>
         <Search class="xl:hidden stroke-foreground/30" />
-        <Cart class="cursor-pointer" />
+        <!-- Carrinho -->
+        <div class="flex items-center justify-center">
+          <Cart @click="openCart()" class="cursor-pointer" />
+        </div>
       </div>
     </div>
 </template>
@@ -31,6 +34,11 @@ const modals = useModals()
 const theme = useColorMode()
 theme.value = 'light'
 
+
+
+const openCart = () => {
+  common.shop_cart = true
+}
 
 const openSideBar = () => {
   common.sidebar = !common.sidebar

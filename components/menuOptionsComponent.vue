@@ -16,11 +16,11 @@
           Categorias
         </Button>
       </li>
-      <li>
+      <!-- <li>
         <Button variant="link" class="p-0">
           Meus Pedidos
         </Button>
-      </li>
+      </li> -->
     </ul>
   </nav>
 </template>
