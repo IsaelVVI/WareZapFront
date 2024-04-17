@@ -33,7 +33,7 @@
 <!--    header produto    -->
         <div>
           <h1 class="font-bold max-xl:text-2xl text-4xl text-start">
-            Tênis Nike Revolution 6 Next Nature Masculino
+            Tênis Revolution 6 Next Nature Masculino
           </h1>
           <sub>
             informações do produto

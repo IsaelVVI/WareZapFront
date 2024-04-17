@@ -1,6 +1,6 @@
 <template>
   <div class="w-full px-2 space-y-4">
-    <div class="w-full">
+    <div class="w-full space-y-2">
       <h3 class="font-bold text-foreground/70">
         Destaques
       </h3>

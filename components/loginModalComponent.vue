@@ -3,7 +3,8 @@
         <DialogContent class="w-full xl:w-96">
             <DialogHeader class="relative">
                 <DialogTitle>
-                    <b>WarezapStore</b>
+                    <!-- <b>WarezapStore</b> -->
+                    <b>Logo da Loja</b>
                 </DialogTitle>
                 <DialogDescription>
                     Realize o login para acessar sua conta

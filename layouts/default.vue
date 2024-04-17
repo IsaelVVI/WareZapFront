@@ -12,7 +12,7 @@
 <!--  Sidebar  -->
     <SidemenuComponent />
 <!--  Carousel  -->
-    <div v-if="pages_carousel.includes(<string>route.name)" class="max-xl:h-48 h-96 w-full">
+    <div v-if="pages_carousel.includes(<string>route.name)" class="max-xl:h-48 h-96 mt-2 w-full">
       <CarouselComponent />
     </div>
     <div class="w-full flex items-center justify-center">

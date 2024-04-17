@@ -2,7 +2,7 @@
     <div class="grid grid-cols-3 p-2 xl:px-10 xl:py-6 bg-white dark:bg-background dark:max-xl:border-b dark:max-xl:mb-2">
       <Menu @click="openSideBar()" class="xl:hidden" :size="25" />
       <div class="flex items-center justify-center">
-        <span class="font-anton select-none cursor-pointer">WareZap Store</span>
+        <span class="font-anton select-none cursor-pointer">Logo da Loja</span>
       </div>
       <div class="max-xl:hidden">
         <div class="bg-foreground/5 pr-5 relative rounded-md flex items-center justify-between">
